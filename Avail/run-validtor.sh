@@ -1,4 +1,8 @@
 read -p "输入你的节点名称: " node_name
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install curl wget -y
+
 cd ~
 
 if [ -d "avail" ]; then
