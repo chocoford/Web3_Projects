@@ -10,9 +10,7 @@ cd ~/avail
 
 wget https://github.com/availproject/avail/releases/download/v1.9.0.0/x86_64-ubuntu-2204-data-avail.tar.gz && tar -xf ./x86_64-ubuntu-2204-data-avail.tar.gz
 
-sudo touch /etc/systemd/system/avail.service
-
-sudo bash -c 'cat > /etc/systemd/system/avail.service <<EOF
+sudo bash -c "cat > /etc/systemd/system/avail.service <<EOF
 [Unit]
 Description=Avail Node
 
@@ -23,7 +21,7 @@ RestartSec=5s
 LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
-EOF'
+EOF"
 
 sudo systemctl daemon-reload
 sudo systemctl enable avail.service
