@@ -12,6 +12,8 @@ else
 fi
 cd ~/avail
 
+avail_path=$(pwd)
+
 wget https://github.com/availproject/avail/releases/download/v1.9.0.0/x86_64-ubuntu-2204-data-avail.tar.gz && tar -xf ./x86_64-ubuntu-2204-data-avail.tar.gz
 
 sudo bash -c "cat > /etc/systemd/system/avail.service <<EOF
@@ -19,7 +21,7 @@ sudo bash -c "cat > /etc/systemd/system/avail.service <<EOF
 Description=Avail Node
 
 [Service]
-ExecStart=/home/avail/data-avail --chain goldberg -d /home/avail/node-data --validator --name $node_name
+ExecStart=$avail_path/data-avail --chain goldberg -d $avail_path/node-data --validator --name $node_name
 Restart=on-failure
 RestartSec=5s
 LimitNOFILE=65535
